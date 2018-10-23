@@ -4,14 +4,20 @@ $(function(){
 
   $(this).css("background-color", $(this).val())
                                });
-
-    $(function insertJSON(urlStr, targetID) {
-            $.getJSON(urlStr, function(data) {
+$('#listdiv > input').on('click',function insertJSON() {
+            $.getJSON('GSP-Fire-Stations.json', function(data) {
+                     //alert(JSON.stringify(data.stations))
+             
+                data.stations.forEach(function(item) {
+//                     alert(JSON.stringify(item));
                      
-                    
-                $.each(data, function(item) {
-                       
-                    });
-    });
-    $('#listdiv > input').on('click', insertJSON('GSP-Fire-Stations.json')); });
- });
+                $('select').append('<option value="'+ item.address +'">' + item.name + '</option>')    
+                });
+	         
+       
+            });
+	
+});
+});
+    
+ 
